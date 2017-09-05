@@ -20,16 +20,24 @@ void print(LinkedList * L){
 	cout<<endl;
 }
 
-LinkedList* insert(LinkedList *L){
+LinkedList* insert(LinkedList *L,string s){
 	if(L==NULL){
-		return (LinkedList*)malloc(sizeof(LinkedList));
+		LinkedList *t = new LinkedList();
+		t->s = s;
+		t->next = NULL;
+		return t;
 	}
 	else{
-		L->next = insert(L->next);
+		L->next = insert(L->next,s);
 		return L;
 	}
 }
 
 int main(){
-	
+	LinkedList * t = NULL;
+	t = insert(t,"abc");
+	t = insert(t,"xyz");
+	t = insert(t,"uvx");
+	print(t);
+		
 }
