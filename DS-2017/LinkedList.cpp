@@ -20,6 +20,7 @@ void print(LinkedList * L){
 	cout<<endl;
 }
 
+<<<<<<< HEAD
 LinkedList* insert(LinkedList *L, int n){
 	if(L==NULL){
 		
@@ -33,11 +34,23 @@ LinkedList* insert(LinkedList *L, int n){
 	}
 	else{
 		L->next = insert(L->next,n);
+=======
+LinkedList* insert(LinkedList *L,string s){
+	if(L==NULL){
+		LinkedList *t = new LinkedList();
+		t->s = s;
+		t->next = NULL;
+		return t;
+	}
+	else{
+		L->next = insert(L->next,s);
+>>>>>>> a3020a34b1a7a7886eda43fcee364ffce6eeb8fd
 		return L;
 	}
 }
 
 int main(){
+<<<<<<< HEAD
 	LinkedList * L = NULL;
 	L = insert(L, 1);
 	cout<<"xxxx";
@@ -47,4 +60,12 @@ int main(){
 	L = insert(L, 3);
 	print(L);
 	print(L);
+=======
+	LinkedList * t = NULL;
+	t = insert(t,"abc");
+	t = insert(t,"xyz");
+	t = insert(t,"uvx");
+	print(t);
+		
+>>>>>>> a3020a34b1a7a7886eda43fcee364ffce6eeb8fd
 }
