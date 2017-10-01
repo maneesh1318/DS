@@ -8,10 +8,8 @@ using namespace std;
 bool isPalindrome(int n);
 
 int main(){
-	int n;
-	cout<<"Enter Number"<<endl;
-	cin>>n;
-	cout<<((isPalindrome(n))?"Palindrome":"Not Palindrome");
+	int x[10] = {12, 10, 9, 45, 2, 10, 10, 45};
+
 }
 
 bool isPalindrome(int n){
@@ -24,4 +22,9 @@ bool isPalindrome(int n){
 	  n = n>>1;
 	}
 	return x==y;	
+}
+
+void printDistictElement(int x[],int n)
+{
+
 }

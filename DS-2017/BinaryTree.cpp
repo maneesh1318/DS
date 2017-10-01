@@ -10,25 +10,26 @@ struct tree{
 	char c;
 	tree *left;
 	tree *right;
+	tree *next;
 };
 
 void preorder(tree *T){
 	if(T == NULL) return;
-	cout<<T->c;
+	cout<<T->c<<" ";
 	preorder(T->left);
 	preorder(T->right);
 }
 void inorder(tree *T){
 	if(T == NULL) return;
 	inorder(T->left);
-	cout<<T->c;
+	cout<<T->c<<" ";
 	inorder(T->right);
 }
 void postorder(tree *T){
 	if(T == NULL) return;
 	postorder(T->left);
 	postorder(T->right);
-	cout<<T->c;
+	cout<<T->c<<" ";
 }
 
 tree* makeTree(string inorder, string preorder);
@@ -57,13 +58,33 @@ int findRoot(string inorder, string preorder){
 	return root;
 }
 
+void populateInorderSuccessor(tree *T)
+{
+	static tree *N = NULL;
+	if(T == NULL) return;
+	populateInorderSuccessor(T->right);
+	T->next = N;
+	N = T;
+	populateInorderSuccessor(T->left);
+}
+
+int maxWidth(tree* T)
+{
+	if(T== NULL) return 0;
+	else{
+		
+	}
+
+}
+
 
 int main(){
 	tree *T = NULL;
-	string porder = "DACEFBQ";
-	string iorder = "ECAFDQB";
-	cout<<findRoot(iorder,porder);
+	string porder = "42513687";
+	string iorder = "12453867";
+	//cout<<findRoot(iorder,porder);
 	T = makeTree(iorder,porder);
+	//populateInorderSuccessor(T);
 	inorder(T);
 	cout<<endl;
 	preorder(T);

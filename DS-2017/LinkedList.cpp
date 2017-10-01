@@ -20,52 +20,66 @@ void print(LinkedList * L){
 	cout<<endl;
 }
 
-<<<<<<< HEAD
+
 LinkedList* insert(LinkedList *L, int n){
 	if(L==NULL){
 		
 		LinkedList * p = (LinkedList*)malloc(sizeof(LinkedList));
-		cout<<n<<endl;
 		p->n = n;
-		cout<<"here";
 		p->next = NULL;
-		cout<<"here";
 		return p;
 	}
 	else{
 		L->next = insert(L->next,n);
-=======
-LinkedList* insert(LinkedList *L,string s){
-	if(L==NULL){
-		LinkedList *t = new LinkedList();
-		t->s = s;
-		t->next = NULL;
-		return t;
-	}
-	else{
-		L->next = insert(L->next,s);
->>>>>>> a3020a34b1a7a7886eda43fcee364ffce6eeb8fd
 		return L;
 	}
 }
 
+LinkedList * addBigInt(LinkedList *P, LinkedList *Q,int & C,bool flag){
+	if(P == NULL || Q == NULL){
+		C = 0;
+		return NULL;
+	}
+	else{
+		int q = 0;
+		LinkedList * R = addBigInt(P->next,Q->next,q,false);
+		LinkedList * S = (LinkedList*)malloc(sizeof(LinkedList));
+		int x = P->n + Q->n + q;
+		if(x < 10){
+			S->n = x;
+			S->next = R;
+			return S;
+		}
+		else{
+			S->n = x%10;
+			S->next = R;
+			if(flag){
+				LinkedList * T = (LinkedList*)malloc(sizeof(LinkedList));
+				T->n = x/10;
+				T->next = S;
+				return T;
+			}
+			else{
+				C = x/10;
+				return S;
+			}
+		}
+	}
+
+}
+
 int main(){
-<<<<<<< HEAD
-	LinkedList * L = NULL;
-	L = insert(L, 1);
-	cout<<"xxxx";
-	print(L);
-	L = insert(L,2);
-	print(L);
-	L = insert(L, 3);
-	print(L);
-	print(L);
-=======
-	LinkedList * t = NULL;
-	t = insert(t,"abc");
-	t = insert(t,"xyz");
-	t = insert(t,"uvx");
-	print(t);
-		
->>>>>>> a3020a34b1a7a7886eda43fcee364ffce6eeb8fd
+	LinkedList * P = NULL;
+	LinkedList *Q = NULL;
+	P = insert(P,5);
+	P = insert(P,5);
+	P = insert(P,5);
+	Q = insert(Q,5);
+	Q = insert(Q,5);
+	Q = insert(Q,5);
+	int C=0;
+	print(P);
+	print(Q);
+	LinkedList * R = addBigInt(P,Q,C,true);
+	print(R);
 }
